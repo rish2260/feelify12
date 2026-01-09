@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Influencers & Media - Feelify Solutions</title>
+    <link rel="stylesheet" href="service-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="../index.html" class="logo-container" onclick="showLogoModal();return false;" style="cursor:pointer;">
+                    <img src="../logo.png" alt="Feelify Solutions Logo" class="logo-img">
+                    <h1 class="logo">Feelify Solutions</h1>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                    <li><a href="../index.html#about" class="nav-link">About</a></li>
+                    <li><a href="../index.html#services" class="nav-link">Services</a></li>
+                    <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+                    <li><a href="client-reviews.html" class="nav-link">Clients</a></li>
+                    <li><a href="influencer-media.html" class="nav-link active">Influencers & Media</a></li>
+                    <li><a href="brand-clients.html" class="nav-link">Brands</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="service-hero">
+        <div class="container">
+            <h1>Influencers & Social Media</h1>
+            <p>Meet the influencers we work with! Watch their video collabs and browse their social posts supporting Feelify Solutions.</p>
+        </div>
+    </section>
+    <section class="service-content">
+        <div class="container">
+            <div class="service-intro">
+                <h2>Our Influencers & Media</h2>
+                <p>Explore the social faces & influencers we're collaborating with! Stay tuned for exciting media highlights.</p>
+            </div>
+            <div class="slider-rows-wrap">
+                <div class="influencer-slider-row influencer-slider-move marquee-one-row">
+                    <div class="influencer-slide-big comingsoon"><span style="font-size:3.1rem">🤳</span><span style="display:block;margin-top:18px;font-size:1.24rem;">Coming Soon</span></div>
+                    <div class="influencer-slide-big comingsoon"><span style="font-size:3.1rem">🤳</span><span style="display:block;margin-top:18px;font-size:1.24rem;">Coming Soon</span></div>
+                    <div class="influencer-slide-big comingsoon"><span style="font-size:3.1rem">🤳</span><span style="display:block;margin-top:18px;font-size:1.24rem;">Coming Soon</span></div>
+                    <div class="influencer-slide-big comingsoon"><span style="font-size:3.1rem">🤳</span><span style="display:block;margin-top:18px;font-size:1.24rem;">Coming Soon</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo-container" onclick="showLogoModal()" style="cursor:pointer;">
+                        <img src="../logo.png" alt="Feelify Solutions Logo" class="footer-logo-img">
+                        <h3>Feelify Solutions</h3>
+                    </div>
+                    <p>We Don't Just Market - We Build Brands that People Feel.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Feelify Solutions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Modal for logo preview -->
+    <div id="logoModal" style="display:none;position:fixed;z-index:9999;left:0;top:0;width:100vw;height:100vh;background:rgba(30,41,59,0.6);align-items:center;justify-content:center;">
+      <span id="logoModalClose" style="position:absolute;top:40px;right:40px;font-size:3rem;color:#fff;cursor:pointer;z-index:7;">&times;</span>
+      <img src="../logo.png" alt="Feelify Logo Large" style="max-width:90vw;max-height:80vh;box-shadow:0 8px 48px rgba(0,0,0,0.28);background:#fff;border-radius:18px;border:8px solid white;">
+    </div>
+    <script>
+const influencerKey = 'influencerGallery';
+function renderInfluencers() {
+  const gal = document.getElementById('influencerGalleryGrid');
+  gal.innerHTML = '';
+  const arr = JSON.parse(localStorage.getItem(influencerKey) || '[]');
+  arr.forEach((item, i) => {
+    let card = document.createElement('div');
+    card.className = 'service-image-card';
+    let fileHtml = item.type.startsWith('video')
+      ? `<video src="${item.url}" controls style="width:100%;border-radius:8px"></video>`
+      : `<img src="${item.url}" alt="${item.name}" style="width:100%;border-radius:8px"/>`;
+    card.innerHTML = `${fileHtml}<p><b>Influencer ${i+1}: ${item.name}</b></p><button class='btn' style='margin:0.5rem auto;display:block;background: #ef4444;color:#fff;' onclick='deleteInf(${i})'>Delete</button>`;
+    gal.appendChild(card);
+  });
+  if (arr.length === 0) { gal.innerHTML = '<p>No influencer uploads yet.</p>'; }
+}
+function deleteInf(i) {
+  const arr = JSON.parse(localStorage.getItem(influencerKey)||'[]');
+  arr.splice(i,1);
+  localStorage.setItem(influencerKey, JSON.stringify(arr));
+  renderInfluencers();
+}
+window.deleteInf=deleteInf;
+renderInfluencers();
+document.getElementById('influencerMediaForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const name = document.getElementById('influencerName').value;
+  const file = document.getElementById('influencerMedia').files[0];
+  if (file && name) {
+    const reader = new FileReader();
+    reader.onload = function(evt) {
+      let arr = JSON.parse(localStorage.getItem(influencerKey)||'[]');
+      arr.unshift({ name:name, url:evt.target.result, type: file.type });
+      localStorage.setItem(influencerKey, JSON.stringify(arr));
+      renderInfluencers();
+    };
+    reader.readAsDataURL(file);
+    this.reset();
+  }
+});
+function showLogoModal() {
+  document.getElementById('logoModal').style.display='flex';
+}
+document.getElementById('logoModalClose').onclick = function() {
+  document.getElementById('logoModal').style.display='none';
+};
+document.getElementById('logoModal').onclick = function(e) {
+  if(e.target === this) this.style.display='none';
+}
+</script>
+</body>
+</html>
