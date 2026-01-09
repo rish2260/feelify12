@@ -1,142 +1,87 @@
 "use client";
+"use client";
 
-import { motion } from "framer-motion";
-import { Send, Mail, MapPin, Phone } from "lucide-react";
-import { submitLead } from "@/app/actions";
+import { Send, Mail, Phone, MapPin } from "lucide-react";
+import { sendMail } from "@/utils/mailto";
 
 export function Contact() {
     return (
         <section id="contact" className="py-24 bg-gray-50 dark:bg-[#0B0B0B]/50">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                    {/* Info */}
-                    <div>
-                        <h2 className="text-3xl md:text-5xl font-bold font-heading mb-6 text-gray-900 dark:text-white">Let's Build Something Great Together</h2>
-                        <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
-                            Whether you're a startup looking to make your mark or an established business ready to scale, we're here to help you achieve your digital marketing goals.
-                        </p>
+            <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16">
 
-                        <div className="space-y-6">
-                            <div className="flex items-start space-x-4">
-                                <div className="w-12 h-12 rounded-full bg-brand-yellow/10 flex items-center justify-center text-brand-yellow shrink-0">
-                                    <Mail />
-                                </div>
-                                <div>
-                                    <h3 className="font-bold text-gray-900 dark:text-white">Email Us</h3>
-                                    <p className="text-gray-600 dark:text-gray-400">contact@feelifysolution.com</p>
-                                </div>
-                            </div>
-                            <div className="flex items-start space-x-4">
-                                <div className="w-12 h-12 rounded-full bg-brand-yellow/10 flex items-center justify-center text-brand-yellow shrink-0">
-                                    <Phone />
-                                </div>
-                                <div>
-                                    <h3 className="font-bold text-gray-900 dark:text-white">Call Us</h3>
-                                    <p className="text-gray-600 dark:text-gray-400">+91 63948 06825 | +91 95547 39955</p>
-                                </div>
-                            </div>
-                            <div className="flex items-start space-x-4">
-                                <div className="w-12 h-12 rounded-full bg-brand-yellow/10 flex items-center justify-center text-brand-yellow shrink-0">
-                                    <MapPin />
-                                </div>
-                                <div>
-                                    <h3 className="font-bold text-gray-900 dark:text-white">Visit Us</h3>
-                                    <p className="text-gray-600 dark:text-gray-400">Vikas Nagar , Mama Chauraha , Lucknow, Uttar Pradesh</p>
-                                    <a
-                                        href="https://www.google.com/maps/search/?api=1&query=Vikas+Nagar+Mama+Chauraha+Lucknow+Uttar+Pradesh"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-brand-yellow text-sm font-semibold hover:underline mt-1 inline-block"
-                                    >
-                                        View on Google Maps →
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                {/* INFO */}
+                <div>
+                    <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-white">
+                        Let’s Build Something Great Together
+                    </h2>
+
+                    <p className="text-gray-600 dark:text-gray-400 mb-8">
+                        Startups, brands, creators — let’s grow together.
+                    </p>
+
+                    <div className="space-y-6">
+                        <Info icon={<Mail />} title="Email" text="contact@feelifysolution.com" />
+                        <Info icon={<Phone />} title="Phone" text="+91 63948 06825" />
+                        <Info icon={<MapPin />} title="Location" text="Lucknow, Uttar Pradesh" />
                     </div>
+                </div>
 
-                    {/* Form */}
-                    <div className="bg-white dark:bg-zinc-900 p-8 rounded-3xl shadow-xl border border-gray-100 dark:border-white/5">
-                        <form action={submitLead} className="space-y-6">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="relative group">
-                                    <input
-                                        name="name"
-                                        type="text"
-                                        required
-                                        className="peer w-full bg-transparent border-b-2 border-gray-200 dark:border-gray-700 py-2 placeholder-transparent focus:outline-none focus:border-brand-yellow transition-colors text-gray-900 dark:text-white font-medium"
-                                        placeholder="Name"
-                                    />
-                                    <label className="absolute left-0 -top-3.5 text-sm text-gray-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-brand-yellow">
-                                        Full Name
-                                    </label>
-                                </div>
+                {/* FORM */}
+                <div className="bg-white dark:bg-zinc-900 p-8 rounded-3xl shadow-xl">
+                    <form
+                        className="space-y-5"
+                        onSubmit={(e) => {
+                            e.preventDefault();
+                            const data = new FormData(e.currentTarget);
 
-                                <div className="relative group">
-                                    <input
-                                        name="email"
-                                        type="email"
-                                        required
-                                        className="peer w-full bg-transparent border-b-2 border-gray-200 dark:border-gray-700 py-2 placeholder-transparent focus:outline-none focus:border-brand-yellow transition-colors text-gray-900 dark:text-white font-medium"
-                                        placeholder="Email"
-                                    />
-                                    <label className="absolute left-0 -top-3.5 text-sm text-gray-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-brand-yellow">
-                                        Work Email
-                                    </label>
-                                </div>
-                            </div>
+                            sendMail({
+                                subject: "New Contact Inquiry - Feelify Solutions",
+                                body: `
+Name: ${data.get("name")}
+Email: ${data.get("email")}
+Phone: ${data.get("phone")}
+Business: ${data.get("business")}
+Message:
+${data.get("message")}
+                `,
+                            });
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="relative group">
-                                    <input
-                                        name="phone"
-                                        type="tel"
-                                        required
-                                        className="peer w-full bg-transparent border-b-2 border-gray-200 dark:border-gray-700 py-2 placeholder-transparent focus:outline-none focus:border-brand-yellow transition-colors text-gray-900 dark:text-white font-medium"
-                                        placeholder="Phone"
-                                    />
-                                    <label className="absolute left-0 -top-3.5 text-sm text-gray-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-brand-yellow">
-                                        Phone Number
-                                    </label>
-                                </div>
+                            e.currentTarget.reset();
+                        }}
+                    >
+                        <Input name="name" placeholder="Full Name" required />
+                        <Input name="email" placeholder="Email" type="email" required />
+                        <Input name="phone" placeholder="Phone" required />
+                        <Input name="business" placeholder="Business (Optional)" />
+                        <Textarea name="message" placeholder="Message" required />
 
-                                <div className="relative group">
-                                    <input
-                                        name="businessName"
-                                        type="text"
-                                        className="peer w-full bg-transparent border-b-2 border-gray-200 dark:border-gray-700 py-2 placeholder-transparent focus:outline-none focus:border-brand-yellow transition-colors text-gray-900 dark:text-white font-medium"
-                                        placeholder="Business"
-                                    />
-                                    <label className="absolute left-0 -top-3.5 text-sm text-gray-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-brand-yellow">
-                                        Business Name
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div className="relative group">
-                                <textarea
-                                    name="message"
-                                    rows={4}
-                                    required
-                                    className="peer w-full bg-transparent border-b-2 border-gray-200 dark:border-gray-700 py-2 placeholder-transparent focus:outline-none focus:border-brand-yellow transition-colors resize-none text-gray-900 dark:text-white font-medium"
-                                    placeholder="Message"
-                                />
-                                <label className="absolute left-0 -top-3.5 text-sm text-gray-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-brand-yellow">
-                                    Project Details
-                                </label>
-                            </div>
-
-                            <button type="submit" className="w-full bg-brand-yellow text-brand-black font-black py-4 rounded-xl hover:bg-yellow-400 transition-all flex items-center justify-center space-x-2 shadow-lg shadow-yellow-500/20 active:scale-95 group">
-                                <span>Send Your Message</span>
-                                <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                            </button>
-                            <p className="text-[10px] text-gray-500 text-center font-bold uppercase tracking-widest">
-                                By clicking send, you agree to our privacy terms.
-                            </p>
-                        </form>
-                    </div>
+                        <button className="w-full bg-yellow-400 text-black py-4 rounded-xl font-bold flex justify-center gap-2">
+                            Send Message <Send size={16} />
+                        </button>
+                    </form>
                 </div>
             </div>
         </section>
+    );
+}
+
+/* Small reusable components */
+function Input(props: any) {
+    return <input {...props} className="w-full border-b bg-transparent p-2 outline-none" />;
+}
+function Textarea(props: any) {
+    return <textarea {...props} rows={4} className="w-full border-b bg-transparent p-2 outline-none" />;
+}
+function Info({ icon, title, text }: any) {
+    return (
+        <div className="flex gap-4 items-start">
+            <div className="w-12 h-12 bg-yellow-400/10 text-yellow-400 flex items-center justify-center rounded-full">
+                {icon}
+            </div>
+            <div>
+                <h4 className="font-bold">{title}</h4>
+                <p className="text-gray-600 dark:text-gray-400">{text}</p>
+            </div>
+        </div>
     );
 }
