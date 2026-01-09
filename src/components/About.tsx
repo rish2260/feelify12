@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Rocket, Target, Eye } from "lucide-react";
 
 export function About() {
     return (
@@ -15,87 +15,103 @@ export function About() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h2 className="text-sm font-bold text-brand-yellow uppercase tracking-widest mb-2">About Us</h2>
-                        <h3 className="text-3xl md:text-5xl font-bold font-heading mb-6 text-gray-900 dark:text-white leading-tight">
-                            We Bridge the Gap Between <br />
-                            <span className="text-gray-500 dark:text-gray-500">Strategy & Execution.</span>
-                        </h3>
-                        <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-                            Feelify Solutions isn't just another agency. We are your growth partners.
-                            While others focus on vanity metrics, we obsess over your ROI.
-                            Our team combines creative storytelling with data-driven performance marketing
-                            to build brands that people actually feel connected to.
-                        </p>
-
-                        <div className="space-y-4 mb-8">
-                            {[
-                                "Data-Driven Strategy",
-                                "Creative That Converts",
-                                "Transparent Reporting",
-                                "24/7 Dedicated Support"
-                            ].map((item, i) => (
-                                <div key={i} className="flex items-center space-x-3">
-                                    <CheckCircle2 className="w-5 h-5 text-brand-yellow" />
-                                    <span className="text-gray-700 dark:text-gray-300 font-medium">{item}</span>
-                                </div>
-                            ))}
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-yellow/10 border border-brand-yellow/20 text-brand-yellow text-xs font-bold uppercase tracking-widest mb-6">
+                            About Feelify Solutions
                         </div>
+                        <h2 className="text-3xl md:text-5xl font-black font-heading mb-6 text-gray-900 dark:text-white leading-tight">
+                            Transforming Small Businesses <br />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-yellow-600">Into Powerful Brands.</span>
+                        </h2>
 
-                        <button className="text-brand-yellow font-bold text-lg hover:underline decoration-2 underline-offset-4">
-                            Learn More About Our Process &rarr;
-                        </button>
+                        <div className="space-y-8">
+                            <div className="flex gap-4">
+                                <div className="w-12 h-12 rounded-2xl bg-gray-50 dark:bg-zinc-800 flex items-center justify-center shrink-0">
+                                    <Rocket className="w-6 h-6 text-brand-yellow" />
+                                </div>
+                                <div>
+                                    <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Who We Are</h4>
+                                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                                        A passionate digital marketing startup dedicated to helping small businesses grow and thrive in the digital landscape. We combine creativity with data-driven strategies to deliver real results.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="flex gap-4">
+                                <div className="w-12 h-12 rounded-2xl bg-gray-50 dark:bg-zinc-800 flex items-center justify-center shrink-0">
+                                    <Target className="w-6 h-6 text-brand-yellow" />
+                                </div>
+                                <div>
+                                    <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Our Mission</h4>
+                                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                                        To empower startups, local businesses & entrepreneurs with affordable, impactful digital growth solutions that drive measurable results and sustainable growth.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="flex gap-4">
+                                <div className="w-12 h-12 rounded-2xl bg-gray-50 dark:bg-zinc-800 flex items-center justify-center shrink-0">
+                                    <Eye className="w-6 h-6 text-brand-yellow" />
+                                </div>
+                                <div>
+                                    <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Our Vision</h4>
+                                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                                        To make every small business a Recognized Brand. We believe every business, regardless of size, deserves to shine and connect meaningfully with their audience.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </motion.div>
 
-                    {/* 3D Stats */}
-                    <div className="relative h-[500px] w-full hidden lg:block perspective-1000">
+                    {/* 3D Visual Module */}
+                    <div className="relative h-[600px] w-full hidden lg:block perspective-1000">
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.8, rotateY: 30 }}
-                            whileInView={{ opacity: 1, scale: 1, rotateY: -10 }}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ duration: 1 }}
-                            className="absolute inset-0 preserve-3d"
+                            className="absolute inset-0 flex items-center justify-center"
                         >
-                            {/* Stat 1 */}
-                            <motion.div
-                                whileHover={{ translateZ: 20 }}
-                                className="absolute top-10 left-10 w-64 p-6 bg-white dark:bg-zinc-900 shadow-2xl rounded-2xl border border-gray-100 dark:border-white/5 z-10"
-                            >
-                                <div className="text-4xl font-bold text-gray-900 dark:text-white mb-1">100+</div>
-                                <div className="text-sm text-gray-500">Campaigns Delivered</div>
-                                <div className="h-1 w-full bg-brand-yellow/20 mt-4 rounded-full overflow-hidden">
-                                    <div className="h-full w-4/5 bg-brand-yellow"></div>
-                                </div>
-                            </motion.div>
+                            <div className="relative w-full h-full">
+                                {/* Decorative elements */}
+                                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-brand-yellow/20 rounded-full blur-[100px]" />
 
-                            {/* Stat 2 */}
-                            <motion.div
-                                whileHover={{ translateZ: 30 }}
-                                className="absolute top-40 right-10 w-64 p-6 bg-brand-yellow shadow-2xl rounded-2xl border-none z-20"
-                            >
-                                <div className="text-lg font-bold text-brand-black mb-1">ROI Focused</div>
-                                <div className="text-brand-black/80 text-sm">Every campaign is optimized for maximum returns.</div>
-                                <div className="mt-4 flex -space-x-2">
-                                    <div className="w-8 h-8 rounded-full bg-black/20" />
-                                    <div className="w-8 h-8 rounded-full bg-black/20" />
-                                    <div className="w-8 h-8 rounded-full bg-black/20" />
-                                </div>
-                            </motion.div>
+                                {/* Floating Cards */}
+                                <motion.div
+                                    animate={{ y: [0, -20, 0] }}
+                                    transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                                    className="absolute top-10 left-10 p-6 bg-white dark:bg-zinc-900 rounded-[2rem] shadow-2xl border border-gray-100 dark:border-white/5 z-20 w-64"
+                                >
+                                    <div className="flex items-center gap-3 mb-4">
+                                        <div className="w-10 h-10 rounded-full bg-green-500/10 flex items-center justify-center">
+                                            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                                        </div>
+                                        <span className="text-xs font-bold uppercase tracking-widest text-gray-400">Live Growth</span>
+                                    </div>
+                                    <div className="text-3xl font-black text-gray-900 dark:text-white">+127%</div>
+                                    <div className="text-sm text-gray-500 mt-2">Organic reach increase</div>
+                                </motion.div>
 
-                            {/* Stat 3 */}
-                            <motion.div
-                                whileHover={{ translateZ: 40 }}
-                                className="absolute bottom-20 left-20 w-72 p-6 glass-dark shadow-xl rounded-2xl border border-white/10 z-30 backdrop-blur-md"
-                            >
-                                <div className="flex items-center space-x-4 mb-3">
-                                    <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-500">
-                                        <CheckCircle2 />
+                                <motion.div
+                                    animate={{ y: [0, 20, 0] }}
+                                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                                    className="absolute bottom-10 right-10 p-6 bg-brand-yellow rounded-[2rem] shadow-2xl z-30 w-64"
+                                >
+                                    <h4 className="text-brand-black font-black text-xl mb-2">Partner with Purpose</h4>
+                                    <p className="text-brand-black/70 text-sm">We don't just work for you, we work with you.</p>
+                                    <div className="flex -space-x-2 mt-4">
+                                        {[1, 2, 3].map(i => (
+                                            <div key={i} className="w-8 h-8 rounded-full border-2 border-brand-yellow bg-gray-200" />
+                                        ))}
                                     </div>
-                                    <div>
-                                        <div className="text-white font-bold">24×7 Support</div>
-                                        <div className="text-white/60 text-xs">Always here for you</div>
-                                    </div>
-                                </div>
-                            </motion.div>
+                                </motion.div>
+
+                                <motion.div
+                                    initial={{ rotate: -15 }}
+                                    animate={{ rotate: [-15, -10, -15] }}
+                                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-[480px] border-2 border-brand-yellow/20 rounded-[3rem] -z-10"
+                                />
+                            </div>
                         </motion.div>
                     </div>
                 </div>

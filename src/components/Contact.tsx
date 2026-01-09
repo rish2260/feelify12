@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Send, Mail, MapPin, Phone } from "lucide-react";
+import { submitLead } from "@/app/actions";
 
 export function Contact() {
     return (
@@ -56,59 +57,82 @@ export function Contact() {
 
                     {/* Form */}
                     <div className="bg-white dark:bg-zinc-900 p-8 rounded-3xl shadow-xl border border-gray-100 dark:border-white/5">
-                        <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-                            <div className="relative group">
-                                <input
-                                    type="text"
-                                    id="name"
-                                    required
-                                    className="peer w-full bg-transparent border-b-2 border-gray-200 dark:border-gray-700 py-2 placeholder-transparent focus:outline-none focus:border-brand-yellow transition-colors text-gray-900 dark:text-white"
-                                    placeholder="Name"
-                                />
-                                <label
-                                    htmlFor="name"
-                                    className="absolute left-0 -top-3.5 text-sm text-gray-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-brand-yellow"
-                                >
-                                    Name
-                                </label>
+                        <form action={submitLead} className="space-y-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div className="relative group">
+                                    <input
+                                        name="name"
+                                        type="text"
+                                        required
+                                        className="peer w-full bg-transparent border-b-2 border-gray-200 dark:border-gray-700 py-2 placeholder-transparent focus:outline-none focus:border-brand-yellow transition-colors text-gray-900 dark:text-white font-medium"
+                                        placeholder="Name"
+                                    />
+                                    <label className="absolute left-0 -top-3.5 text-sm text-gray-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-brand-yellow">
+                                        Full Name
+                                    </label>
+                                </div>
+
+                                <div className="relative group">
+                                    <input
+                                        name="email"
+                                        type="email"
+                                        required
+                                        className="peer w-full bg-transparent border-b-2 border-gray-200 dark:border-gray-700 py-2 placeholder-transparent focus:outline-none focus:border-brand-yellow transition-colors text-gray-900 dark:text-white font-medium"
+                                        placeholder="Email"
+                                    />
+                                    <label className="absolute left-0 -top-3.5 text-sm text-gray-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-brand-yellow">
+                                        Work Email
+                                    </label>
+                                </div>
                             </div>
 
-                            <div className="relative group">
-                                <input
-                                    type="email"
-                                    id="email"
-                                    required
-                                    className="peer w-full bg-transparent border-b-2 border-gray-200 dark:border-gray-700 py-2 placeholder-transparent focus:outline-none focus:border-brand-yellow transition-colors text-gray-900 dark:text-white"
-                                    placeholder="Email"
-                                />
-                                <label
-                                    htmlFor="email"
-                                    className="absolute left-0 -top-3.5 text-sm text-gray-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-brand-yellow"
-                                >
-                                    Email
-                                </label>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div className="relative group">
+                                    <input
+                                        name="phone"
+                                        type="tel"
+                                        required
+                                        className="peer w-full bg-transparent border-b-2 border-gray-200 dark:border-gray-700 py-2 placeholder-transparent focus:outline-none focus:border-brand-yellow transition-colors text-gray-900 dark:text-white font-medium"
+                                        placeholder="Phone"
+                                    />
+                                    <label className="absolute left-0 -top-3.5 text-sm text-gray-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-brand-yellow">
+                                        Phone Number
+                                    </label>
+                                </div>
+
+                                <div className="relative group">
+                                    <input
+                                        name="businessName"
+                                        type="text"
+                                        className="peer w-full bg-transparent border-b-2 border-gray-200 dark:border-gray-700 py-2 placeholder-transparent focus:outline-none focus:border-brand-yellow transition-colors text-gray-900 dark:text-white font-medium"
+                                        placeholder="Business"
+                                    />
+                                    <label className="absolute left-0 -top-3.5 text-sm text-gray-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-brand-yellow">
+                                        Business Name
+                                    </label>
+                                </div>
                             </div>
 
                             <div className="relative group">
                                 <textarea
-                                    id="message"
+                                    name="message"
                                     rows={4}
                                     required
-                                    className="peer w-full bg-transparent border-b-2 border-gray-200 dark:border-gray-700 py-2 placeholder-transparent focus:outline-none focus:border-brand-yellow transition-colors resize-none text-gray-900 dark:text-white"
+                                    className="peer w-full bg-transparent border-b-2 border-gray-200 dark:border-gray-700 py-2 placeholder-transparent focus:outline-none focus:border-brand-yellow transition-colors resize-none text-gray-900 dark:text-white font-medium"
                                     placeholder="Message"
                                 />
-                                <label
-                                    htmlFor="message"
-                                    className="absolute left-0 -top-3.5 text-sm text-gray-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-brand-yellow"
-                                >
-                                    Message
+                                <label className="absolute left-0 -top-3.5 text-sm text-gray-500 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-brand-yellow">
+                                    Project Details
                                 </label>
                             </div>
 
-                            <button type="submit" className="w-full bg-brand-yellow text-brand-black font-bold py-4 rounded-xl hover:bg-yellow-400 transition-colors flex items-center justify-center space-x-2 shadow-lg shadow-yellow-500/20">
-                                <span>Send Message</span>
-                                <Send className="w-4 h-4" />
+                            <button type="submit" className="w-full bg-brand-yellow text-brand-black font-black py-4 rounded-xl hover:bg-yellow-400 transition-all flex items-center justify-center space-x-2 shadow-lg shadow-yellow-500/20 active:scale-95 group">
+                                <span>Send Your Message</span>
+                                <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                             </button>
+                            <p className="text-[10px] text-gray-500 text-center font-bold uppercase tracking-widest">
+                                By clicking send, you agree to our privacy terms.
+                            </p>
                         </form>
                     </div>
                 </div>

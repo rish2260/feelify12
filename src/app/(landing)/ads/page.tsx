@@ -81,7 +81,7 @@ export default function AdsLandingPage() {
                         </a>
                     </div>
 
-                    <p className="mt-6 text-xs text-gray-400 uppercase tracking-widest">Trusted by 100+ Fast Growing Brands</p>
+                    <p className="mt-6 text-xs text-gray-400 uppercase tracking-widest">Trusted by 10+ Fast Growing Brands</p>
                 </div>
             </section>
 

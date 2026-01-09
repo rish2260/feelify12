@@ -5,15 +5,21 @@ import { WhyFeelify } from "@/components/WhyFeelify";
 import { SocialProof } from "@/components/SocialProof";
 import { CTA } from "@/components/CTA";
 import { Contact } from "@/components/Contact";
+import { AppGamingStudio } from "@/components/AppGamingStudio";
+import { Work } from "@/components/Work";
+import { Media } from "@/components/Media";
 
 export default function Home() {
     return (
         <>
             <Hero />
-            <SocialProof />
             <About />
             <Services />
+            <Work />
+            <SocialProof />
+            <AppGamingStudio />
             <WhyFeelify />
+            <Media />
             <CTA />
             <Contact />
         </>
