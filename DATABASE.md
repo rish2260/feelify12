@@ -11,15 +11,6 @@ This project uses **external database integration only** via API endpoints.
 
 ### Integration Points
 
-All form submissions are handled via Server Actions in `src/app/actions.ts`.
-
-**To connect your database:**
-
-1. Set up your external database (MongoDB Atlas, MySQL, etc.)
-2. Create API endpoints for:
-   - `/api/leads` - Contact form submissions
-   - `/api/partners` - Partnership inquiries
-3. Update `src/app/actions.ts` with your API endpoints
 
 ### Data Models
 
@@ -62,4 +53,4 @@ All form submissions are handled via Server Actions in `src/app/actions.ts`.
 
 1. Install dependencies: `npm install`
 2. Run dev server: `npm run dev`
-3. Connect your external database API in `src/app/actions.ts`
+
