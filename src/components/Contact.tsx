@@ -21,8 +21,8 @@ export function Contact() {
 
                     <div className="space-y-6">
                         <Info icon={<Mail />} title="Email" text="contact@feelifysolution.com" />
-                        <Info icon={<Phone />} title="Phone" text="+91 63948 06825" />
-                        <Info icon={<MapPin />} title="Location" text="Lucknow, Uttar Pradesh" />
+                        <Info icon={<Phone />} title="Phone" text="📞+91 63948 06825 ||📞+91 95547 39955" />
+                        <Info icon={<MapPin />} title="Location" text="Vikas Nagar, Mama Chauraha, Lucknow, Uttar Pradesh" />
                     </div>
                 </div>
 
