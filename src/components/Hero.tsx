@@ -23,7 +23,7 @@ export function Hero() {
     const rotateY = useTransform(mouseX, [-300, 300], [-10, 10]);
 
     return (
-        <section id="home" className="relative min-h-[95vh] flex items-center justify-center pt-24 overflow-hidden bg-white dark:bg-[#0B0B0B]">
+        <section id="home" className="relative min-h-[95vh] flex items-center justify-center pt-24 overflow-hidden md:overflow-visible bg-white dark:bg-[#0B0B0B]">
             {/* Background Studio Grids */}
             <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05] pointer-events-none"
                 style={{ backgroundImage: 'linear-gradient(currentColor 1px, transparent 1px), linear-gradient(90deg, currentColor 1px, transparent 1px)', backgroundSize: '100px 100px' }} />
@@ -95,7 +95,7 @@ export function Hero() {
                 </motion.div>
 
                 {/* Right 3D Visual Module */}
-                <div className="hidden lg:flex justify-end perspective-1000 h-[650px] items-center" onMouseMove={handleMouseMove} onMouseLeave={() => { x.set(0); y.set(0); }}>
+                <div className="flex justify-center lg:justify-end perspective-1000 h-[420px] sm:h-[480px] lg:h-[650px] items-center mt-12 lg:mt-0" onMouseMove={handleMouseMove} onMouseLeave={() => { x.set(0); y.set(0); }}>
                     <motion.div
                         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
                         className="relative w-[480px] h-[580px]"
