@@ -14,7 +14,7 @@ const brands = [
 
 export function SocialProof() {
     return (
-        <section id="brands" className="py-24 bg-gray-50 dark:bg-[#0B0B0B]/50 border-y border-gray-100 dark:border-white/5 overflow-hidden">
+        <section id="brands" className="py-24 bg-gray-50 dark:bg-[#0B0B0B]/50 border-y border-gray-100 dark:border-white/5 overflow-hidden md:overflow-visible">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <motion.h2

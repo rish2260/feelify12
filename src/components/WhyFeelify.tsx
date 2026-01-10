@@ -66,7 +66,7 @@ const whatMakesUsDifferent = [
 
 export function WhyFeelify() {
     return (
-        <section id="why-feelify" className="py-24 bg-gray-50 dark:bg-[#0B0B0B]/50 relative overflow-hidden">
+        <section id="why-feelify" className="py-24 bg-gray-50 dark:bg-[#0B0B0B]/50 relative overflow-hidden md:overflow-visible">
             {/* Background elements */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-yellow/5 rounded-full blur-[120px] -z-10" />
 

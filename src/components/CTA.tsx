@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export function CTA() {
     return (
-        <section className="py-24 bg-brand-yellow relative overflow-hidden">
+        <section className="py-24 bg-brand-yellow relative overflow-hidden md:overflow-visible">
             {/* Decorative Shapes */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
